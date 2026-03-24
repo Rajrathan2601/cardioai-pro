@@ -1,5 +1,6 @@
-st.write("App Started Successfully")
 import streamlit as st
+
+st.write("App Started Successfully")
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -74,8 +75,12 @@ if page == "Dashboard":
         report = create_report(name, age, predicted, risk)
 
         with open(report, "rb") as f:
-            st.download_button("Download Report", f)
-
+         st.download_button(
+            label="📄 Download Report",
+            data=f,
+            file_name="CardioAI_Report.pdf",
+            mime="application/pdf"
+         )
 # HISTORY PAGE
 else:
     st.title("Patient History")
